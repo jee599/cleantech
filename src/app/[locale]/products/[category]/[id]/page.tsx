@@ -26,7 +26,7 @@ export default async function ProductDetailPage({ params }: Props) {
   const tNav = await getTranslations('nav');
   const tProducts = await getTranslations('products');
   const tCommon = await getTranslations('common');
-  const lang = locale as 'ko' | 'en';
+  const lang = locale as 'ko' | 'en' | 'th';
 
   const specs = [
     { label: lang === 'ko' ? '여재' : 'Media', value: product.media[lang] },

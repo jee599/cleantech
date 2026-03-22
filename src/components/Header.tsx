@@ -109,10 +109,8 @@ export default function Header() {
     timeoutRef.current = setTimeout(() => setOpenDropdown(null), 150);
   }
 
-  function switchLocale() {
-    const next = locale === 'ko' ? 'en' : 'ko';
-    router.replace(pathname, { locale: next });
-  }
+  const locales = ['ko', 'en', 'th'] as const;
+  const localeLabels: Record<string, string> = { ko: 'KO', en: 'EN', th: 'TH' };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
@@ -164,12 +162,21 @@ export default function Header() {
           {/* Right side */}
           <div className="flex items-center gap-3">
             {/* Language toggle */}
-            <button
-              onClick={switchLocale}
-              className="text-sm font-medium text-gray-500 hover:text-[#4A9BD9] transition-colors border border-gray-200 rounded-md px-3 py-1"
-            >
-              {locale === 'ko' ? 'EN' : 'KO'}
-            </button>
+            <div className="flex items-center border border-gray-200 rounded-md overflow-hidden">
+              {locales.map((loc) => (
+                <button
+                  key={loc}
+                  onClick={() => router.replace(pathname, { locale: loc })}
+                  className={`text-xs font-medium px-2.5 py-1.5 transition-colors ${
+                    locale === loc
+                      ? 'bg-[#0F1B2D] text-white'
+                      : 'text-gray-500 hover:text-[#4A9BD9]'
+                  }`}
+                >
+                  {localeLabels[loc]}
+                </button>
+              ))}
+            </div>
 
             {/* Mobile hamburger */}
             <button

@@ -22,7 +22,7 @@ export default async function CategoryPage({ params }: Props) {
   const tNav = await getTranslations('nav');
   const tCommon = await getTranslations('common');
 
-  const lang = locale as 'ko' | 'en';
+  const lang = locale as 'ko' | 'en' | 'th';
   const categoryProducts = getProductsByCategory(category as ProductCategory);
 
   return (

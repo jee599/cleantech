@@ -15,7 +15,7 @@ export default async function ProductsPage({ params }: Props) {
   const tNav = await getTranslations('nav');
   const tProducts = await getTranslations('products');
   const tCommon = await getTranslations('common');
-  const lang = locale as 'ko' | 'en';
+  const lang = locale as 'ko' | 'en' | 'th';
 
   const categories: { id: ProductCategory; color: string }[] = [
     { id: 'ulpa', color: '#4A9BD9' },

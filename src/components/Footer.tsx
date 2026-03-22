@@ -12,10 +12,8 @@ export default function Footer() {
   const pathname = usePathname();
   const router = useRouter();
 
-  function switchLocale() {
-    const next = locale === 'ko' ? 'en' : 'ko';
-    router.replace(pathname, { locale: next });
-  }
+  const locales = ['ko', 'en', 'th'] as const;
+  const localeNames: Record<string, string> = { ko: '한국어', en: 'English', th: 'ไทย' };
 
   const year = new Date().getFullYear();
 
@@ -148,12 +146,19 @@ export default function Footer() {
           <p className="text-xs text-gray-500">
             {t('copyright', { year })}
           </p>
-          <button
-            onClick={switchLocale}
-            className="text-xs text-gray-500 hover:text-white transition-colors"
-          >
-            {locale === 'ko' ? 'English' : '한국어'}
-          </button>
+          <div className="flex items-center gap-2">
+            {locales.map((loc) => (
+              <button
+                key={loc}
+                onClick={() => router.replace(pathname, { locale: loc })}
+                className={`text-xs transition-colors ${
+                  locale === loc ? 'text-white font-medium' : 'text-gray-500 hover:text-white'
+                }`}
+              >
+                {localeNames[loc]}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

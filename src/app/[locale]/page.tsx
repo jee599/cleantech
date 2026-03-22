@@ -16,7 +16,7 @@ export default async function HomePage({ params }: Props) {
   const tProducts = await getTranslations('products');
   const tCompany = await getTranslations('company');
 
-  const lang = locale as 'ko' | 'en';
+  const lang = locale as 'ko' | 'en' | 'th';
 
   const categories = ['ulpa', 'hepa', 'medium', 'pre', 'carbon'] as const;
 

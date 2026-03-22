@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "home": "홈",
+    "company": "회사소개",
+    "products": "제품소개",
+    "inquiry": "온라인 문의",
+    "customer": "고객지원",
+    "greeting": "인사말",
+    "history": "연혁",
+    "organization": "조직도",
+    "location": "오시는 길",
+    "ulpa": "ULPA",
+    "hepa": "HEPA",
+    "medium": "MEDIUM",
+    "pre": "PRE",
+    "carbon": "CARBON",
+    "notice": "공지사항",
+    "qna": "Q&A"
+  },
+  "hero": {
+    "tagline": "세계 최고 수준의 필터 기술로 깨끗한 공기를 만듭니다",
+    "subtitle": "1993년부터 크린테크코리아는 반도체, 제약, 산업 시설의 공기 여과 분야에서 신뢰받는 파트너입니다."
+  },
+  "company": {
+    "greeting": {
+      "title": "인사말",
+      "content": "크린테크코리아(주)는 깨끗한 공기와 더 나은 환경을 위해 한 걸음 더 나아가고 있습니다. 창의적인 고전 정신, 자동화 시설, 숙련된 기술로 환경 분야의 연구개발에 집중하고 있습니다. 대기 환경과 공중 보건을 위한 강력한 글로벌 경쟁력을 약속드립니다.",
+      "ceoName": "정성호",
+      "ceoTitle": "대표이사"
+    },
+    "info": {
+      "companyName": "크린테크코리아(주)",
+      "ceo": "정성호",
+      "founded": "1993",
+      "address": "경기도 광주시 초월읍 용수길 197",
+      "phone": "+82-31-761-8261~2",
+      "fax": "+82-31-762-3993",
+      "email": "ctic@kita.net"
+    },
+    "history": {
+      "title": "연혁",
+      "milestones": [
+        { "year": "2023", "event": "서울대병원, 국립암센터 납품" },
+        { "year": "2020", "event": "신공장 이전 (용수길 197)" },
+        { "year": "2018", "event": "삼성중공업 FLNG 필터 납품" },
+        { "year": "2016", "event": "녹색경영대상 수상" },
+        { "year": "2015", "event": "UL 인증 취득" },
+        { "year": "2005", "event": "ISO 9001, 14001 인증 취득" },
+        { "year": "2004", "event": "크린테크코리아(주) 법인 전환" },
+        { "year": "2001", "event": "유망기업 지정, 홍콩 필트레이션 파트너십" },
+        { "year": "1996", "event": "현대전자 오토롤 필터 납품" },
+        { "year": "1995", "event": "HEPA·ULPA 필터 생산, 삼성전자 납품" },
+        { "year": "1993", "event": "설립, 프리·미디엄 필터 생산 시작" }
+      ]
+    }
+  },
+  "products": {
+    "title": "제품소개",
+    "categories": {
+      "ulpa": {
+        "name": "ULPA",
+        "description": "반도체 클린룸을 위한 초저침투 공기 필터"
+      },
+      "hepa": {
+        "name": "HEPA",
+        "description": "정밀 환경을 위한 고효율 미립자 공기 필터"
+      },
+      "medium": {
+        "name": "MEDIUM",
+        "description": "HVAC 시스템용 중효율 필터"
+      },
+      "pre": {
+        "name": "PRE",
+        "description": "1차 공기 여과를 위한 프리필터"
+      },
+      "carbon": {
+        "name": "CARBON",
+        "description": "가스·악취 제거를 위한 활성탄 필터"
+      }
+    }
+  },
+  "inquiry": {
+    "title": "온라인 문의",
+    "form": {
+      "name": "이름",
+      "company": "회사명",
+      "email": "이메일",
+      "phone": "연락처",
+      "subject": "제목",
+      "message": "내용"
+    }
+  },
+  "footer": {
+    "description": "1993년 설립 이래 세계 수준의 공기 여과 솔루션을 제공하고 있습니다.",
+    "quickLinks": "바로가기",
+    "contact": "연락처",
+    "copyright": "© 2024 크린테크코리아(주) All rights reserved."
+  },
+  "common": {
+    "learnMore": "자세히 보기",
+    "contactUs": "문의하기",
+    "viewProducts": "제품 보기",
+    "allProducts": "전체 제품",
+    "backToList": "목록으로",
+    "submit": "제출",
+    "required": "필수"
+  }
+}

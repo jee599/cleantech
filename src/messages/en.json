@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "home": "Home",
+    "company": "Company",
+    "products": "Products",
+    "inquiry": "Inquiry",
+    "customer": "Customer",
+    "greeting": "Greeting",
+    "history": "History",
+    "organization": "Organization",
+    "location": "Location",
+    "ulpa": "ULPA",
+    "hepa": "HEPA",
+    "medium": "MEDIUM",
+    "pre": "PRE",
+    "carbon": "CARBON",
+    "notice": "Notice",
+    "qna": "Q&A"
+  },
+  "hero": {
+    "tagline": "Creating Clean Air with World-Class Filtration Technology",
+    "subtitle": "Since 1993, Clean Tech Korea has been a trusted partner in air filtration for semiconductor, pharmaceutical, and industrial facilities worldwide."
+  },
+  "company": {
+    "greeting": {
+      "title": "CEO Greeting",
+      "content": "Our Clean Tech Korea Co., Ltd. is taking a step forward for clean air and a better environment. With our creative classical spirit, automation facilities, and skilled technology, we focus on R&D in environmental fields. We promise strong global competitiveness and commitment to atmospheric environment and public health.",
+      "ceoName": "Jeong Seong-ho",
+      "ceoTitle": "CEO"
+    },
+    "info": {
+      "companyName": "Clean Tech Korea Co., Ltd.",
+      "ceo": "Jeong Seong-ho",
+      "founded": "1993",
+      "address": "675-3, Sinwol-ri, Chowol-eup, Gwangju, Gyeonggi-do, Republic of Korea",
+      "phone": "+82-31-761-8261~2",
+      "fax": "+82-31-762-3993",
+      "email": "ctic@kita.net"
+    },
+    "history": {
+      "title": "History",
+      "milestones": [
+        { "year": "2023", "event": "Supplied Seoul National University Hospital, National Cancer Center" },
+        { "year": "2020", "event": "Relocated to new facility" },
+        { "year": "2018", "event": "Samsung Heavy Industries FLNG filters" },
+        { "year": "2016", "event": "Green Management Awards" },
+        { "year": "2015", "event": "UL certification" },
+        { "year": "2005", "event": "ISO 9001, 14001 certification" },
+        { "year": "2004", "event": "Transitioned to Clean Tech Korea Co., Ltd" },
+        { "year": "2001", "event": "Designated promising enterprise, Hong Kong Filtration partnership" },
+        { "year": "1996", "event": "Auto roll filters to Hyundai Electronics" },
+        { "year": "1995", "event": "HEPA/ULPA production started, supplied Samsung Electronics" },
+        { "year": "1993", "event": "Founded, began producing pre and medium filters" }
+      ]
+    }
+  },
+  "products": {
+    "title": "Products",
+    "categories": {
+      "ulpa": {
+        "name": "ULPA",
+        "description": "Ultra-low penetration air filters for semiconductor cleanrooms"
+      },
+      "hepa": {
+        "name": "HEPA",
+        "description": "High-efficiency particulate air filters for critical environments"
+      },
+      "medium": {
+        "name": "MEDIUM",
+        "description": "Medium-efficiency filters for HVAC systems"
+      },
+      "pre": {
+        "name": "PRE",
+        "description": "Pre-filters for primary air filtration"
+      },
+      "carbon": {
+        "name": "CARBON",
+        "description": "Activated carbon filters for gas/odor removal"
+      }
+    }
+  },
+  "inquiry": {
+    "title": "Inquiry",
+    "form": {
+      "name": "Name",
+      "company": "Company",
+      "email": "Email",
+      "phone": "Phone",
+      "subject": "Subject",
+      "message": "Message"
+    }
+  },
+  "footer": {
+    "description": "Providing world-class air filtration solutions since 1993.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "copyright": "© 2024 Clean Tech Korea Co., Ltd. All rights reserved."
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "contactUs": "Contact Us",
+    "viewProducts": "View Products",
+    "allProducts": "All Products",
+    "backToList": "Back to List",
+    "submit": "Submit",
+    "required": "Required"
+  }
+}

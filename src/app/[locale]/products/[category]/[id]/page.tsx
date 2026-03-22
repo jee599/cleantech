@@ -27,13 +27,15 @@ export default async function ProductDetailPage({ params }: Props) {
   const tProducts = await getTranslations('products');
   const tCommon = await getTranslations('common');
   const lang = locale as 'ko' | 'en' | 'th';
+  const T = (ko: string, en: string, th: string) =>
+    lang === 'ko' ? ko : lang === 'th' ? th : en;
 
   const specs = [
-    { label: lang === 'ko' ? '여재' : 'Media', value: product.media[lang] },
-    { label: lang === 'ko' ? '효율' : 'Efficiency', value: product.efficiency },
-    { label: lang === 'ko' ? '적용분야' : 'Applications', value: product.applications[lang] },
-    ...(product.maxTemp ? [{ label: lang === 'ko' ? '최고온도' : 'Max Temp', value: product.maxTemp }] : []),
-    ...(product.maxHumidity ? [{ label: lang === 'ko' ? '최대습도' : 'Max Humidity', value: product.maxHumidity }] : []),
+    { label: T('여재', 'Media', 'วัสดุกรอง'), value: product.media[lang] },
+    { label: T('효율', 'Efficiency', 'ประสิทธิภาพ'), value: product.efficiency },
+    { label: T('적용분야', 'Applications', 'การใช้งาน'), value: product.applications[lang] },
+    ...(product.maxTemp ? [{ label: T('최고온도', 'Max Temp', 'อุณหภูมิสูงสุด'), value: product.maxTemp }] : []),
+    ...(product.maxHumidity ? [{ label: T('최대습도', 'Max Humidity', 'ความชื้นสูงสุด'), value: product.maxHumidity }] : []),
   ];
 
   return (
@@ -66,7 +68,7 @@ export default async function ProductDetailPage({ params }: Props) {
             {/* Specs */}
             <div>
               <h2 className="text-2xl font-bold text-[#0F1B2D] mb-6">
-                {lang === 'ko' ? '제품 사양' : 'Specifications'}
+                {T('제품 사양', 'Specifications', 'ข้อมูลจำเพาะ')}
               </h2>
               <div className="space-y-0 divide-y divide-gray-100">
                 {specs.map((spec) => (
@@ -85,23 +87,23 @@ export default async function ProductDetailPage({ params }: Props) {
           {product.models.length > 0 && (
             <div className="mt-16">
               <h2 className="text-2xl font-bold text-[#0F1B2D] mb-6">
-                {lang === 'ko' ? '모델 사양' : 'Model Specifications'}
+                {T('모델 사양', 'Model Specifications', 'ข้อมูลจำเพาะรุ่น')}
               </h2>
               <div className="overflow-x-auto rounded-xl border border-gray-100">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="bg-[#f8f9fb]">
                       <th className="text-left py-4 px-6 font-semibold text-gray-500 uppercase tracking-wider text-xs">
-                        {lang === 'ko' ? '모델번호' : 'Model No.'}
+                        {T('모델번호', 'Model No.', 'รุ่น')}
                       </th>
                       <th className="text-left py-4 px-6 font-semibold text-gray-500 uppercase tracking-wider text-xs">
-                        {lang === 'ko' ? '규격 (mm)' : 'Dimensions (mm)'}
+                        {T('규격 (mm)', 'Dimensions (mm)', 'ขนาด (mm)')}
                       </th>
                       <th className="text-left py-4 px-6 font-semibold text-gray-500 uppercase tracking-wider text-xs">
-                        {lang === 'ko' ? '풍량' : 'Airflow'}
+                        {T('풍량', 'Airflow', 'ปริมาณลม')}
                       </th>
                       <th className="text-left py-4 px-6 font-semibold text-gray-500 uppercase tracking-wider text-xs">
-                        {lang === 'ko' ? '압력손실' : 'Pressure Loss'}
+                        {T('압력손실', 'Pressure Loss', 'แรงดันสูญเสีย')}
                       </th>
                     </tr>
                   </thead>
@@ -124,7 +126,7 @@ export default async function ProductDetailPage({ params }: Props) {
           {product.curveImage && (
             <div className="mt-16">
               <h2 className="text-2xl font-bold text-[#0F1B2D] mb-6">
-                {lang === 'ko' ? '성능 곡선' : 'Performance Curve'}
+                {T('성능 곡선', 'Performance Curve', 'กราฟประสิทธิภาพ')}
               </h2>
               <div className="bg-[#f8f9fb] rounded-xl p-8 flex justify-center">
                 <Image

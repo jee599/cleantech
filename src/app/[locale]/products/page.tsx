@@ -16,6 +16,8 @@ export default async function ProductsPage({ params }: Props) {
   const tProducts = await getTranslations('products');
   const tCommon = await getTranslations('common');
   const lang = locale as 'ko' | 'en' | 'th';
+  const T = (ko: string, en: string, th: string) =>
+    lang === 'ko' ? ko : lang === 'th' ? th : en;
 
   const categories: { id: ProductCategory; color: string }[] = [
     { id: 'ulpa', color: '#4A9BD9' },
@@ -29,7 +31,7 @@ export default async function ProductsPage({ params }: Props) {
     <>
       <PageHero
         title={tProducts('title')}
-        subtitle={lang === 'ko' ? 'ULPA, HEPA, MEDIUM, PRE, CARBON 등 21종의 에어필터 라인업' : 'Full lineup of 21 air filters across ULPA, HEPA, MEDIUM, PRE, and CARBON categories'}
+        subtitle={T('ULPA, HEPA, MEDIUM, PRE, CARBON 등 21종의 에어필터 라인업', 'Full lineup of 21 air filters across ULPA, HEPA, MEDIUM, PRE, and CARBON categories', 'ไลน์อัพฟิลเตอร์อากาศ 21 ชนิดครบทุกประเภท ULPA, HEPA, MEDIUM, PRE, CARBON')}
         breadcrumbs={[
           { label: tNav('home'), href: `/${locale}` },
           { label: tProducts('title') },

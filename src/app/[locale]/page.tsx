@@ -18,6 +18,9 @@ export default async function HomePage({ params }: Props) {
 
   const lang = locale as 'ko' | 'en' | 'th';
 
+  const T = (ko: string, en: string, th: string) =>
+    lang === 'ko' ? ko : lang === 'th' ? th : en;
+
   const categories = ['ulpa', 'hepa', 'medium', 'pre', 'carbon'] as const;
 
   // Featured products (first product from each category)
@@ -42,7 +45,7 @@ export default async function HomePage({ params }: Props) {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-blue-200 mb-6">
               <span className="w-2 h-2 rounded-full bg-[#4A9BD9]" />
-              {lang === 'ko' ? '1993년 설립 · 30년+ 기술력' : 'Est. 1993 · 30+ Years of Excellence'}
+              {T('1993년 설립 · 30년+ 기술력', 'Est. 1993 · 30+ Years of Excellence', 'ก่อตั้งปี 1993 · มากกว่า 30 ปีแห่งความเป็นเลิศ')}
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight">
               {t('tagline')}
@@ -76,10 +79,10 @@ export default async function HomePage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-100">
             {[
-              { value: '30+', label: lang === 'ko' ? '년 업력' : 'Years', icon: '📅' },
-              { value: '21', label: lang === 'ko' ? '제품 라인업' : 'Product Lines', icon: '🔧' },
+              { value: '30+', label: T('년 업력', 'Years', 'ปี'), icon: '📅' },
+              { value: '21', label: T('제품 라인업', 'Product Lines', 'สายผลิตภัณฑ์'), icon: '🔧' },
               { value: 'ISO', label: '9001 / 14001', icon: '✓' },
-              { value: 'UL', label: lang === 'ko' ? '국제 인증' : 'Certified', icon: '🌍' },
+              { value: 'UL', label: T('국제 인증', 'Certified', 'ได้รับการรับรอง'), icon: '🌍' },
             ].map((stat) => (
               <div key={stat.value + stat.label} className="py-8 lg:py-10 px-6 text-center">
                 <div className="text-3xl lg:text-4xl font-bold text-[#0F1B2D]">{stat.value}</div>
@@ -95,13 +98,13 @@ export default async function HomePage({ params }: Props) {
         <Container>
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-[#4A9BD9] uppercase tracking-widest mb-3">
-              {lang === 'ko' ? '제품 라인업' : 'Product Lineup'}
+              {T('제품 라인업', 'Product Lineup', 'สายผลิตภัณฑ์')}
             </p>
             <h2 className="text-3xl lg:text-4xl font-bold text-[#0F1B2D] tracking-tight">
               {tProducts('title')}
             </h2>
             <p className="mt-4 text-gray-500 max-w-2xl mx-auto">
-              {lang === 'ko' ? '반도체, 제약, 병원, 산업 시설 등 다양한 환경에 최적화된 에어 필터를 제공합니다.' : 'Air filters optimized for semiconductor, pharmaceutical, hospital, and industrial environments.'}
+              {T('반도체, 제약, 병원, 산업 시설 등 다양한 환경에 최적화된 에어 필터를 제공합니다.', 'Air filters optimized for semiconductor, pharmaceutical, hospital, and industrial environments.', 'ฟิลเตอร์อากาศที่ปรับให้เหมาะกับสภาพแวดล้อมเซมิคอนดักเตอร์ เภสัชกรรม โรงพยาบาล และอุตสาหกรรม')}
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -136,7 +139,7 @@ export default async function HomePage({ params }: Props) {
                       {tProducts(`categories.${catId}.description`)}
                     </p>
                     <div className="mt-4 text-xs text-gray-400">
-                      {getProductsByCategory(catId).length} {lang === 'ko' ? '개 제품' : 'products'}
+                      {getProductsByCategory(catId).length} {T('개 제품', 'products', 'ผลิตภัณฑ์')}
                     </div>
                   </div>
                 </Link>
@@ -170,20 +173,20 @@ export default async function HomePage({ params }: Props) {
             </div>
             <div>
               <p className="text-sm font-semibold text-[#4A9BD9] uppercase tracking-widest mb-3">
-                {lang === 'ko' ? '회사소개' : 'About Us'}
+                {T('회사소개', 'About Us', 'เกี่ยวกับเรา')}
               </p>
               <h2 className="text-3xl lg:text-4xl font-bold text-[#0F1B2D] tracking-tight">
-                {lang === 'ko' ? '깨끗한 공기를 위한\n기술 파트너' : 'Your Technology\nPartner for Clean Air'}
+                {T('깨끗한 공기를 위한\n기술 파트너', 'Your Technology\nPartner for Clean Air', 'พันธมิตรด้านเทคโนโลยี\nเพื่ออากาศบริสุทธิ์')}
               </h2>
               <p className="mt-6 text-gray-600 leading-relaxed">
                 {tCompany('greeting.content')}
               </p>
               <div className="mt-8 grid grid-cols-2 gap-4">
                 {[
-                  { label: lang === 'ko' ? '설립' : 'Founded', value: '1993' },
-                  { label: lang === 'ko' ? '인증' : 'Certifications', value: 'ISO 9001/14001' },
-                  { label: lang === 'ko' ? '국제 인증' : 'International', value: 'UL Certified' },
-                  { label: lang === 'ko' ? '수상' : 'Awards', value: lang === 'ko' ? '녹색경영대상' : 'Green Management' },
+                  { label: T('설립', 'Founded', 'ก่อตั้ง'), value: '1993' },
+                  { label: T('인증', 'Certifications', 'การรับรอง'), value: 'ISO 9001/14001' },
+                  { label: T('국제 인증', 'International', 'ระหว่างประเทศ'), value: 'UL Certified' },
+                  { label: T('수상', 'Awards', 'รางวัล'), value: T('녹색경영대상', 'Green Management', 'การจัดการสีเขียว') },
                 ].map((item) => (
                   <div key={item.label} className="py-4 border-l-2 border-[#4A9BD9] pl-4">
                     <div className="text-xs text-gray-400 uppercase tracking-wider">{item.label}</div>
@@ -210,20 +213,20 @@ export default async function HomePage({ params }: Props) {
         <Container>
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-[#4A9BD9] uppercase tracking-widest mb-3">
-              {lang === 'ko' ? '적용 분야' : 'Industries'}
+              {T('적용 분야', 'Industries', 'อุตสาหกรรม')}
             </p>
             <h2 className="text-3xl lg:text-4xl font-bold text-[#0F1B2D] tracking-tight">
-              {lang === 'ko' ? '다양한 산업 분야에 적용' : 'Applied Across Industries'}
+              {T('다양한 산업 분야에 적용', 'Applied Across Industries', 'นำไปใช้ในหลากหลายอุตสาหกรรม')}
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
-              { icon: '🏭', label: lang === 'ko' ? '반도체' : 'Semiconductor' },
-              { icon: '💊', label: lang === 'ko' ? '제약' : 'Pharmaceutical' },
-              { icon: '🏥', label: lang === 'ko' ? '병원' : 'Hospital' },
-              { icon: '⚡', label: lang === 'ko' ? '전자' : 'Electronics' },
-              { icon: '🚢', label: lang === 'ko' ? '조선' : 'Shipbuilding' },
-              { icon: '🏢', label: lang === 'ko' ? '상업 빌딩' : 'Commercial' },
+              { icon: '🏭', label: T('반도체', 'Semiconductor', 'เซมิคอนดักเตอร์') },
+              { icon: '💊', label: T('제약', 'Pharmaceutical', 'เภสัชกรรม') },
+              { icon: '🏥', label: T('병원', 'Hospital', 'โรงพยาบาล') },
+              { icon: '⚡', label: T('전자', 'Electronics', 'อิเล็กทรอนิกส์') },
+              { icon: '🚢', label: T('조선', 'Shipbuilding', 'ต่อเรือ') },
+              { icon: '🏢', label: T('상업 빌딩', 'Commercial', 'อาคารพาณิชย์') },
             ].map((industry) => (
               <div key={industry.label} className="bg-white rounded-xl p-6 text-center border border-gray-100 hover:border-[#4A9BD9]/30 hover:shadow-md transition-all">
                 <div className="text-3xl mb-3">{industry.icon}</div>
@@ -246,14 +249,10 @@ export default async function HomePage({ params }: Props) {
         <Container className="relative z-10">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl lg:text-4xl font-bold text-white tracking-tight">
-              {lang === 'ko'
-                ? '맞춤 필터 솔루션이 필요하신가요?'
-                : 'Need a Custom Filtration Solution?'}
+              {T('맞춤 필터 솔루션이 필요하신가요?', 'Need a Custom Filtration Solution?', 'ต้องการโซลูชันการกรองแบบกำหนดเองหรือไม่?')}
             </h2>
             <p className="mt-4 text-gray-300 text-lg">
-              {lang === 'ko'
-                ? '30년 경험의 전문가가 최적의 솔루션을 제안합니다.'
-                : 'Our experts with 30+ years of experience will find the right solution.'}
+              {T('30년 경험의 전문가가 최적의 솔루션을 제안합니다.', 'Our experts with 30+ years of experience will find the right solution.', 'ผู้เชี่ยวชาญของเราที่มีประสบการณ์มากกว่า 30 ปีจะหาโซลูชันที่เหมาะสม')}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Link

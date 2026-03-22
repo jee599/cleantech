@@ -372,7 +372,7 @@ export const products: Product[] = [
     id: 'medium-bag-filter',
     name: { en: 'MEDIUM BAG FILTER', ko: 'MEDIUM BAG FILTER' },
     image: '/images/products/product_14.png',
-    curveImage: '/images/curves/curve_14.jpg',
+    curveImage: '',
     category: 'medium',
     description: {
       en: 'Bag type medium filter with dual-layer meltblown synthetic media, available in 4 to 10 pocket configurations.',

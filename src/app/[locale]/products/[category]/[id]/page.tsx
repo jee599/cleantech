@@ -121,20 +121,22 @@ export default async function ProductDetailPage({ params }: Props) {
           )}
 
           {/* Performance Curve */}
-          <div className="mt-16">
-            <h2 className="text-2xl font-bold text-[#0F1B2D] mb-6">
-              {lang === 'ko' ? '성능 곡선' : 'Performance Curve'}
-            </h2>
-            <div className="bg-[#f8f9fb] rounded-xl p-8 flex justify-center">
-              <Image
-                src={product.curveImage}
-                alt={`${product.name[lang]} performance curve`}
-                width={600}
-                height={400}
-                className="object-contain"
-              />
+          {product.curveImage && (
+            <div className="mt-16">
+              <h2 className="text-2xl font-bold text-[#0F1B2D] mb-6">
+                {lang === 'ko' ? '성능 곡선' : 'Performance Curve'}
+              </h2>
+              <div className="bg-[#f8f9fb] rounded-xl p-8 flex justify-center">
+                <Image
+                  src={product.curveImage}
+                  alt={`${product.name[lang]} performance curve`}
+                  width={600}
+                  height={400}
+                  className="object-contain"
+                />
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Back Link */}
           <div className="mt-12">

@@ -21,11 +21,12 @@ export const partners: Partner[] = [
     logo: '/images/partners/samsung-electronics.webp',
   },
   {
-    // 현대전자산업은 2001년 하이닉스반도체, 2012년 SK하이닉스로 사명이 바뀌어 현존하지 않는다.
-    // 현행 SK하이닉스 로고를 1996년 실적에 붙이면 사실과 어긋나므로 워드마크로 둔다.
+    // 1990~2001년에 쓰인 로고. 현대전자산업은 2001년 하이닉스, 2012년 SK하이닉스로
+    // 사명이 바뀌었으므로 현행 SK하이닉스 로고가 아니라 납품 시점(1996)의 로고를 쓴다.
     id: 'hyundai-electronics',
     name: { ko: '현대전자', en: 'Hyundai Electronics', th: 'Hyundai Electronics' },
     since: '1996',
+    logo: '/images/partners/hyundai-electronics.webp',
   },
   {
     id: 'hongkong-filtration',

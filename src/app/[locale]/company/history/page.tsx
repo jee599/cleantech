@@ -1,6 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import PageHero from '@/components/PageHero';
-import Container from '@/components/Container';
 import HistoryTimeline from '@/components/HistoryTimeline';
 
 type Props = {
@@ -25,11 +24,7 @@ export default async function HistoryPage({ params }: Props) {
           { label: tNav('history') },
         ]}
       />
-      <section className="py-16 md:py-24">
-        <Container>
-          <HistoryTimeline lang={lang} />
-        </Container>
-      </section>
+      <HistoryTimeline lang={lang} />
     </>
   );
 }

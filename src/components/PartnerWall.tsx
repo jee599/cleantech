@@ -35,19 +35,22 @@ export default function PartnerWall({ lang }: { lang: Lang }) {
               key={p.id}
               className="flex min-h-[132px] flex-col items-center justify-center gap-2 border-r border-b border-neutral-200 bg-white px-4 py-8 text-center"
             >
-              {p.logo ? (
-                <Image
-                  src={p.logo}
-                  alt={p.name[lang]}
-                  width={160}
-                  height={48}
-                  className="h-10 w-auto object-contain"
-                />
-              ) : (
-                <span className="text-lg font-semibold tracking-[-0.02em] text-[#0F1B2D] [word-break:keep-all]">
-                  {p.name[lang]}
-                </span>
-              )}
+              {/* 로고와 워드마크가 섞여도 광학 크기가 맞도록 높이를 고정한 박스에 담는다. */}
+              <div className="flex h-10 items-center justify-center">
+                {p.logo ? (
+                  <Image
+                    src={p.logo}
+                    alt={p.name[lang]}
+                    width={200}
+                    height={40}
+                    className="max-h-8 w-auto object-contain"
+                  />
+                ) : (
+                  <span className="text-lg font-semibold tracking-[-0.02em] text-[#0F1B2D] [word-break:keep-all]">
+                    {p.name[lang]}
+                  </span>
+                )}
+              </div>
               <span className="text-xs tabular-nums text-neutral-500">
                 {copy.since[lang]} {p.since}
               </span>

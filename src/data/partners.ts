@@ -18,8 +18,11 @@ export const partners: Partner[] = [
     id: 'samsung-electronics',
     name: { ko: '삼성전자', en: 'Samsung Electronics', th: 'Samsung Electronics' },
     since: '1995',
+    logo: '/images/partners/samsung-electronics.webp',
   },
   {
+    // 현대전자산업은 2001년 하이닉스반도체, 2012년 SK하이닉스로 사명이 바뀌어 현존하지 않는다.
+    // 현행 SK하이닉스 로고를 1996년 실적에 붙이면 사실과 어긋나므로 워드마크로 둔다.
     id: 'hyundai-electronics',
     name: { ko: '현대전자', en: 'Hyundai Electronics', th: 'Hyundai Electronics' },
     since: '1996',
@@ -33,6 +36,7 @@ export const partners: Partner[] = [
     id: 'samsung-heavy',
     name: { ko: '삼성중공업', en: 'Samsung Heavy Industries', th: 'Samsung Heavy Industries' },
     since: '2018',
+    logo: '/images/partners/samsung-heavy.webp',
   },
   {
     id: 'snuh',
@@ -42,10 +46,12 @@ export const partners: Partner[] = [
       th: 'Seoul National University Hospital',
     },
     since: '2023',
+    logo: '/images/partners/snuh.webp',
   },
   {
     id: 'ncc',
     name: { ko: '국립암센터', en: 'National Cancer Center', th: 'National Cancer Center' },
     since: '2023',
+    logo: '/images/partners/ncc.webp',
   },
 ];

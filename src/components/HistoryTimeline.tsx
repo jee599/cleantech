@@ -1,10 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import Container from '@/components/Container';
 import { milestones, kindLabel } from '@/data/milestones';
-import { partners } from '@/data/partners';
 
 type Lang = 'ko' | 'en' | 'th';
 
@@ -12,11 +10,8 @@ type Lang = 'ko' | 'en' | 'th';
 const items = milestones;
 const LAST = items.length - 1;
 
-// 연도별 협업사 — 해당 연도의 로고/이름을 타임라인에 함께 노출한다.
-const partnersByYear = partners.reduce<Record<string, typeof partners>>((acc, p) => {
-  (acc[p.since] ||= []).push(p);
-  return acc;
-}, {});
+// 연도당 스크롤 거리(px). vh가 아니라 px로 두어 화면 크기와 무관하게 일정한 속도로 넘어간다.
+const PX_PER_ITEM = 460;
 
 export default function HistoryTimeline({ lang }: { lang: Lang }) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -28,7 +23,7 @@ export default function HistoryTimeline({ lang }: { lang: Lang }) {
     const compute = () => {
       const el = sectionRef.current;
       if (!el) return;
-      const total = el.offsetHeight - window.innerHeight;
+      const total = el.offsetHeight - window.innerHeight; // = items.length * PX_PER_ITEM
       if (total <= 0) return;
       const scrolled = Math.min(Math.max(-el.getBoundingClientRect().top, 0), total);
       setActive(Math.min(LAST, Math.floor((scrolled / total) * items.length)));
@@ -61,18 +56,17 @@ export default function HistoryTimeline({ lang }: { lang: Lang }) {
   };
 
   const a = items[active];
-  const yearPartners = partnersByYear[a.year];
 
   return (
     <section
       ref={sectionRef}
       aria-label="연혁"
-      style={{ height: `${items.length * 45}vh` }}
+      style={{ height: `calc(100vh + ${items.length * PX_PER_ITEM}px)` }}
       className="relative bg-white"
     >
-      <div className="sticky top-20 flex h-[calc(100vh-5rem)] items-center overflow-hidden">
-        <Container>
-          <div className="grid gap-8 md:grid-cols-[92px_minmax(0,1fr)] md:items-center md:gap-12 lg:grid-cols-[104px_minmax(0,1fr)]">
+      <div className="sticky top-20 flex h-[calc(100vh-5rem)] flex-col justify-center overflow-hidden">
+        <Container className="w-full">
+          <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-[104px_minmax(0,1fr)] md:items-center md:gap-14">
             {/* 좌: 연도 레일 — 전체 범위에서 현재 위치를 보여주고, 클릭하면 점프 */}
             <ol className="relative hidden md:block">
               <span className="absolute bottom-2 left-[3.5px] top-2 w-px bg-neutral-200" />
@@ -108,8 +102,8 @@ export default function HistoryTimeline({ lang }: { lang: Lang }) {
               })}
             </ol>
 
-            {/* 우: 큰 연도 + 내용 + 그 해 협업 로고 */}
-            <div>
+            {/* 우: 큰 연도 + 내용. min-height로 연도가 바뀌어도 높이가 흔들리지 않게 고정 */}
+            <div className="flex min-h-[240px] flex-col justify-center">
               <div className="mb-4 h-0.5 w-12 bg-[#4A9BD9]" />
               <div className="flex items-baseline gap-4">
                 <span className="text-[64px] font-medium leading-none tracking-[-0.04em] text-[#0F1B2D] tabular-nums md:text-[96px] lg:text-[116px]">
@@ -127,33 +121,6 @@ export default function HistoryTimeline({ lang }: { lang: Lang }) {
                 <p className="mt-4 max-w-xl text-base leading-relaxed text-[#424242] [word-break:keep-all] md:text-lg">
                   {a.detail[lang]}
                 </p>
-              )}
-
-              {yearPartners && (
-                <div className="mt-8 border-t border-neutral-200 pt-5">
-                  <span className="text-xs font-semibold uppercase tracking-[0.12em] text-neutral-400">
-                    {lang === 'ko' ? '이 해 함께한 곳' : lang === 'th' ? 'พันธมิตรในปีนี้' : 'Partners this year'}
-                  </span>
-                  <div className="mt-4 flex flex-wrap items-center gap-x-10 gap-y-4">
-                    {yearPartners.map((p) => (
-                      <div key={p.id} className="flex h-9 items-center">
-                        {p.logo ? (
-                          <Image
-                            src={p.logo}
-                            alt={p.name[lang]}
-                            width={180}
-                            height={36}
-                            className="max-h-8 w-auto object-contain"
-                          />
-                        ) : (
-                          <span className="text-lg font-semibold tracking-[-0.02em] text-[#0F1B2D] [word-break:keep-all]">
-                            {p.name[lang]}
-                          </span>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
               )}
 
               {/* 모바일: 레일 대신 가로 진행 막대 */}

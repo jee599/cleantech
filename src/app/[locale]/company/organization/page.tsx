@@ -49,7 +49,7 @@ export default async function OrganizationPage({ params }: Props) {
           <div className="max-w-4xl mx-auto">
             {/* CEO */}
             <div className="flex justify-center">
-              <div className="bg-[var(--navy)] text-white rounded-xl px-10 py-5 text-center">
+              <div className="bg-[var(--navy)] text-white rounded-lg px-10 py-5 text-center">
                 <div className="text-sm text-gray-300 mb-1">{isKo ? '대표이사' : 'CEO'}</div>
                 <div className="text-lg font-bold">{isKo ? '정성호' : 'Jeong Seong-ho'}</div>
               </div>

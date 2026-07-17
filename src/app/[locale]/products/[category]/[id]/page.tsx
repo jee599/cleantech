@@ -55,7 +55,7 @@ export default async function ProductDetailPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Product Image */}
-            <div className="bg-[#f8f9fb] rounded-2xl p-10 flex items-center justify-center">
+            <div className="bg-[#f8f9fb] rounded-lg p-10 flex items-center justify-center">
               <Image
                 src={product.image}
                 alt={product.name[lang]}
@@ -89,7 +89,7 @@ export default async function ProductDetailPage({ params }: Props) {
               <h2 className="text-2xl font-bold text-[#0F1B2D] mb-6">
                 {T('모델 사양', 'Model Specifications', 'ข้อมูลจำเพาะรุ่น')}
               </h2>
-              <div className="overflow-x-auto rounded-xl border border-gray-100">
+              <div className="overflow-x-auto rounded-lg border border-gray-100">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="bg-[#f8f9fb]">
@@ -128,7 +128,7 @@ export default async function ProductDetailPage({ params }: Props) {
               <h2 className="text-2xl font-bold text-[#0F1B2D] mb-6">
                 {T('성능 곡선', 'Performance Curve', 'กราฟประสิทธิภาพ')}
               </h2>
-              <div className="bg-[#f8f9fb] rounded-xl p-8 flex justify-center">
+              <div className="bg-[#f8f9fb] rounded-lg p-8 flex justify-center">
                 <Image
                   src={product.curveImage}
                   alt={`${product.name[lang]} performance curve`}

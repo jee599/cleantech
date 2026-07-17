@@ -43,7 +43,7 @@ export default async function CategoryPage({ params }: Props) {
               <Link
                 key={product.id}
                 href={`/products/${category}/${product.id}`}
-                className="group bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg hover:border-[#4A9BD9]/30 transition-all duration-300"
+                className="group block bg-white rounded-lg border border-neutral-200 overflow-hidden transition-colors duration-150 hover:border-[#4A9BD9] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4A9BD9]"
               >
                 <div className="relative h-48 bg-[#f8f9fb] flex items-center justify-center p-6">
                   <Image

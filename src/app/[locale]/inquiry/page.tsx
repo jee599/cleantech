@@ -36,27 +36,37 @@ export default async function InquiryPage({ params }: Props) {
 
             {/* Contact Info Sidebar */}
             <div>
-              <div className="bg-gray-50 rounded-xl p-6 border-l-4 border-[#4A9BD9] sticky top-8">
-                <h3 className="font-bold text-[var(--navy)] text-lg mb-6">
+              <div className="sticky top-8 border-t border-[#0F1B2D] pt-6">
+                <h3 className="text-lg font-semibold tracking-[-0.02em] text-[#0F1B2D]">
                   {isKo ? '연락처' : 'Contact Information'}
                 </h3>
-                <dl className="space-y-5 text-sm">
-                  <div>
-                    <dt className="text-gray-400 mb-1">{isKo ? '주소' : 'Address'}</dt>
-                    <dd className="text-gray-700">{t('info.address')}</dd>
+                <dl className="mt-6 text-sm">
+                  <div className="border-t border-neutral-200 py-4">
+                    <dt className="text-neutral-500">{isKo ? '주소' : 'Address'}</dt>
+                    <dd className="mt-1 text-[#0F1B2D] [word-break:keep-all]">{t('info.address')}</dd>
                   </div>
-                  <div>
-                    <dt className="text-gray-400 mb-1">{isKo ? '전화' : 'Phone'}</dt>
-                    <dd className="text-gray-700">{t('info.phone')}</dd>
+                  <div className="border-t border-neutral-200 py-4">
+                    <dt className="text-neutral-500">{isKo ? '전화' : 'Phone'}</dt>
+                    <dd className="mt-1">
+                      <a
+                        href={`tel:${t('info.phone').replace(/[^+\d]/g, '')}`}
+                        className="text-[#0F1B2D] hover:text-[#4A9BD9] transition-colors duration-150"
+                      >
+                        {t('info.phone')}
+                      </a>
+                    </dd>
                   </div>
-                  <div>
-                    <dt className="text-gray-400 mb-1">{isKo ? '팩스' : 'Fax'}</dt>
-                    <dd className="text-gray-700">{t('info.fax')}</dd>
+                  <div className="border-t border-neutral-200 py-4">
+                    <dt className="text-neutral-500">{isKo ? '팩스' : 'Fax'}</dt>
+                    <dd className="mt-1 text-[#0F1B2D]">{t('info.fax')}</dd>
                   </div>
-                  <div>
-                    <dt className="text-gray-400 mb-1">{isKo ? '이메일' : 'Email'}</dt>
-                    <dd>
-                      <a href={`mailto:${t('info.email')}`} className="text-[#4A9BD9] hover:underline">
+                  <div className="border-t border-b border-neutral-200 py-4">
+                    <dt className="text-neutral-500">{isKo ? '이메일' : 'Email'}</dt>
+                    <dd className="mt-1">
+                      <a
+                        href={`mailto:${t('info.email')}`}
+                        className="text-[#0F1B2D] hover:text-[#4A9BD9] transition-colors duration-150"
+                      >
                         {t('info.email')}
                       </a>
                     </dd>

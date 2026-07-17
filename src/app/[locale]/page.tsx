@@ -44,8 +44,7 @@ export default async function HomePage({ params }: Props) {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/90 via-[#0a1628]/70 to-transparent" />
         <Container className="relative z-10">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-blue-200 mb-6">
-              <span className="w-2 h-2 rounded-full bg-[#4A9BD9]" />
+            <div className="mb-6 text-sm font-semibold uppercase tracking-[0.12em] text-white/70">
               {T('1993년 설립 · 30년+ 기술력', 'Est. 1993 · 30+ Years of Excellence', 'ก่อตั้งปี 1993 · มากกว่า 30 ปีแห่งความเป็นเลิศ')}
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-medium text-white leading-[1.15] tracking-[-0.02em] [word-break:keep-all]">
@@ -176,7 +175,7 @@ export default async function HomePage({ params }: Props) {
                   { label: T('국제 인증', 'International', 'ระหว่างประเทศ'), value: 'UL Certified' },
                   { label: T('수상', 'Awards', 'รางวัล'), value: T('녹색경영대상', 'Green Management', 'การจัดการสีเขียว') },
                 ].map((item) => (
-                  <div key={item.label} className="py-4 border-l-2 border-[#4A9BD9] pl-4">
+                  <div key={item.label} className="border-t border-neutral-200 py-4">
                     <div className="text-xs text-neutral-500 uppercase tracking-wider">{item.label}</div>
                     <div className="mt-1 text-sm font-semibold text-[#0F1B2D]">{item.value}</div>
                   </div>

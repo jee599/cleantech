@@ -150,13 +150,6 @@ export default function HistoryTimeline({ lang }: { lang: Lang }) {
                     </p>
                   )}
                 </div>
-
-                {/* 하단: 인덱스 */}
-                <div className="mt-auto flex items-center gap-3 pt-6 text-xs tabular-nums text-neutral-400">
-                  <span className="font-semibold text-[#0F1B2D]">{String(active + 1).padStart(2, '0')}</span>
-                  <span className="h-px w-6 bg-neutral-300" />
-                  <span>{String(items.length).padStart(2, '0')}</span>
-                </div>
               </div>
             </div>
 

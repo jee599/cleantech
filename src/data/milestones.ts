@@ -62,6 +62,11 @@ export const milestones: Milestone[] = [
       en: 'Green Management Awards',
       th: 'รางวัลการจัดการสีเขียว',
     },
+    detail: {
+      ko: '환경경영 실천 성과를 인정받아 수상.',
+      en: 'Recognized for environmental management performance.',
+      th: 'ได้รับการยอมรับจากผลงานด้านการจัดการสิ่งแวดล้อม',
+    },
   },
   {
     year: '2015',
@@ -81,6 +86,11 @@ export const milestones: Milestone[] = [
       en: 'ISO 9001, 14001 certification',
       th: 'ได้รับการรับรอง ISO 9001, 14001',
     },
+    detail: {
+      ko: '품질경영(9001)·환경경영(14001) 국제표준 인증.',
+      en: 'International standards for quality (9001) and environmental (14001) management.',
+      th: 'มาตรฐานสากลด้านการจัดการคุณภาพ (9001) และสิ่งแวดล้อม (14001)',
+    },
   },
   {
     year: '2004',
@@ -89,6 +99,11 @@ export const milestones: Milestone[] = [
       ko: '크린테크코리아(주) 법인 전환',
       en: 'Transitioned to Clean Tech Korea Co., Ltd',
       th: 'เปลี่ยนเป็นบริษัท คลีนเทค โคเรีย จำกัด',
+    },
+    detail: {
+      ko: '개인사업체에서 법인 체제로 전환.',
+      en: 'Reorganized from a sole proprietorship into a corporation.',
+      th: 'ปรับโครงสร้างจากกิจการเจ้าของคนเดียวเป็นบริษัท',
     },
   },
   {
@@ -99,6 +114,11 @@ export const milestones: Milestone[] = [
       en: 'Designated promising enterprise, Hong Kong Filtration partnership',
       th: 'ได้รับการกำหนดให้เป็นองค์กรที่มีอนาคต ความร่วมมือกับ Hong Kong Filtration',
     },
+    detail: {
+      ko: '유망기업 지정과 함께 첫 해외 파트너십을 맺음.',
+      en: 'Named a promising enterprise and formed its first overseas partnership.',
+      th: 'ได้รับเลือกเป็นองค์กรที่มีอนาคตและสร้างความร่วมมือต่างประเทศครั้งแรก',
+    },
   },
   {
     year: '1996',
@@ -107,6 +127,11 @@ export const milestones: Milestone[] = [
       ko: '현대전자 오토롤 필터 납품',
       en: 'Auto roll filters to Hyundai Electronics',
       th: 'จัดส่งฟิลเตอร์ออโตโรลให้ Hyundai Electronics',
+    },
+    detail: {
+      ko: '현대전자 생산라인에 오토롤(자동 감김) 방식 필터 공급.',
+      en: 'Supplied auto-roll filters to Hyundai Electronics production lines.',
+      th: 'จัดส่งฟิลเตอร์แบบออโตโรลให้สายการผลิตของ Hyundai Electronics',
     },
   },
   {
@@ -130,6 +155,11 @@ export const milestones: Milestone[] = [
       ko: '설립, 프리·미디엄 필터 생산 시작',
       en: 'Founded, began producing pre and medium filters',
       th: 'ก่อตั้ง เริ่มผลิตฟิลเตอร์ชนิดพรีและมีเดียม',
+    },
+    detail: {
+      ko: '프리필터·미디엄 필터 생산으로 사업을 시작.',
+      en: 'Started the business producing pre and medium filters.',
+      th: 'เริ่มต้นธุรกิจด้วยการผลิตฟิลเตอร์พรีและมีเดียม',
     },
   },
 ];

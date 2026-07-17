@@ -10,20 +10,28 @@ type Lang = 'ko' | 'en' | 'th';
 const items = milestones;
 const LAST = items.length - 1;
 
-// 연도당 스크롤 거리(px). vh가 아니라 px로 두어 화면 크기와 무관하게 일정한 속도로 넘어간다.
+// 연도당 스크롤 거리(px). vh가 아니라 px로 두어 화면 크기와 무관하게 일정하다.
 const PX_PER_ITEM = 460;
+
+// 카테고리별 색 — 칩·활성 점·아웃라인 연도에 쓴다.
+const kindColor: Record<string, string> = {
+  supply: '#3B82C4', // 납품
+  certification: '#C0883E', // 인증·수상
+  corporate: '#64748B', // 경영
+  product: '#0E9F8E', // 제품
+};
 
 export default function HistoryTimeline({ lang }: { lang: Lang }) {
   const sectionRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
 
-  // 섹션을 화면에 고정(sticky)한 채, 스크롤 진행도로 활성 연도만 바꾼다.
+  // 섹션을 고정(sticky)한 채 스크롤 진행도로 활성 연도만 바꾼다.
   useEffect(() => {
     let raf = 0;
     const compute = () => {
       const el = sectionRef.current;
       if (!el) return;
-      const total = el.offsetHeight - window.innerHeight; // = items.length * PX_PER_ITEM
+      const total = el.offsetHeight - window.innerHeight;
       if (total <= 0) return;
       const scrolled = Math.min(Math.max(-el.getBoundingClientRect().top, 0), total);
       setActive(Math.min(LAST, Math.floor((scrolled / total) * items.length)));
@@ -45,7 +53,6 @@ export default function HistoryTimeline({ lang }: { lang: Lang }) {
     };
   }, []);
 
-  // 레일에서 특정 연도 클릭 → 해당 구간으로 스크롤 점프.
   const scrollToIndex = (i: number) => {
     const el = sectionRef.current;
     if (!el) return;
@@ -56,6 +63,7 @@ export default function HistoryTimeline({ lang }: { lang: Lang }) {
   };
 
   const a = items[active];
+  const color = kindColor[a.kind] ?? '#4A9BD9';
 
   return (
     <section
@@ -65,11 +73,22 @@ export default function HistoryTimeline({ lang }: { lang: Lang }) {
       className="relative bg-white"
     >
       <div className="sticky top-20 flex h-[calc(100vh-5rem)] flex-col justify-center overflow-hidden">
-        <Container className="w-full">
-          <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-[104px_minmax(0,1fr)] md:items-center md:gap-14">
-            {/* 좌: 연도 레일 — 전체 범위에서 현재 위치를 보여주고, 클릭하면 점프 */}
+        {/* 카테고리 색과 함께 바뀌는 부드러운 배경 글로우 */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute right-[-120px] top-1/2 z-0 h-[540px] w-[540px] -translate-y-1/2 rounded-full blur-[130px] transition-colors duration-500"
+          style={{ backgroundColor: color, opacity: 0.1 }}
+        />
+        <Container className="relative z-10 w-full">
+          <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-[110px_minmax(0,1fr)] md:items-center md:gap-16">
+            {/* 좌: 연도 레일 — 전체 범위·현재 위치·진행도. 클릭 시 점프 */}
             <ol className="relative hidden md:block">
-              <span className="absolute bottom-2 left-[3.5px] top-2 w-px bg-neutral-200" />
+              <div className="absolute left-[3.5px] top-2 bottom-2 w-px bg-neutral-200">
+                <div
+                  className="w-px bg-[#4A9BD9] transition-[height] duration-200 ease-out"
+                  style={{ height: `${(active / LAST) * 100}%` }}
+                />
+              </div>
               {items.map((m, i) => {
                 const on = i === active;
                 return (
@@ -81,17 +100,17 @@ export default function HistoryTimeline({ lang }: { lang: Lang }) {
                       className="group flex items-center gap-3 py-[7px]"
                     >
                       <span
-                        className={`relative z-10 block size-2 rounded-full transition-all duration-200 ${
-                          on
-                            ? 'scale-125 bg-[#4A9BD9]'
-                            : 'bg-neutral-300 group-hover:bg-neutral-400'
-                        }`}
-                      />
+                        className="relative z-10 block size-2 rounded-full transition-all duration-200"
+                        style={{
+                          backgroundColor: on ? color : undefined,
+                          transform: on ? 'scale(1.3)' : undefined,
+                        }}
+                      >
+                        {!on && <span className="block size-2 rounded-full bg-neutral-300 group-hover:bg-neutral-400" />}
+                      </span>
                       <span
                         className={`text-sm tabular-nums transition-colors duration-200 ${
-                          on
-                            ? 'font-semibold text-[#0F1B2D]'
-                            : 'text-neutral-400 group-hover:text-neutral-600'
+                          on ? 'font-semibold text-[#0F1B2D]' : 'text-neutral-400 group-hover:text-neutral-600'
                         }`}
                       >
                         {m.year}
@@ -102,38 +121,55 @@ export default function HistoryTimeline({ lang }: { lang: Lang }) {
               })}
             </ol>
 
-            {/* 우: 큰 연도 + 내용. min-height로 연도가 바뀌어도 높이가 흔들리지 않게 고정 */}
-            <div className="flex min-h-[240px] flex-col justify-center">
-              <div className="mb-4 h-0.5 w-12 bg-[#4A9BD9]" />
-              <div className="flex items-baseline gap-4">
-                <span className="text-[64px] font-medium leading-none tracking-[-0.04em] text-[#0F1B2D] tabular-nums md:text-[96px] lg:text-[116px]">
-                  {a.year}
-                </span>
-                <span className="text-xs font-semibold uppercase tracking-[0.12em] text-[#4A9BD9]">
-                  {kindLabel[a.kind][lang]}
-                </span>
-              </div>
-
-              <p className="mt-5 text-2xl font-semibold leading-snug tracking-[-0.02em] text-[#0F1B2D] [word-break:keep-all] md:text-3xl">
-                {a.event[lang]}
-              </p>
-              {a.detail && (
-                <p className="mt-4 max-w-xl text-base leading-relaxed text-[#424242] [word-break:keep-all] md:text-lg">
-                  {a.detail[lang]}
-                </p>
-              )}
-
-              {/* 모바일: 레일 대신 가로 진행 막대 */}
-              <div className="mt-8 flex items-center gap-3 text-xs tabular-nums text-neutral-400 md:hidden">
-                <span>{items[0].year}</span>
-                <span className="relative h-px flex-1 overflow-hidden bg-neutral-200">
+            {/* 우: 고정 높이 박스 — 연도가 최상단에 고정되어 글자수와 무관하게 위치가 그대로 */}
+            <div className="relative flex h-[320px] flex-col">
+              {/* 실제 내용 — 연도가 바뀔 때마다 아래에서 떠오르는 리빌 효과 */}
+              <div
+                key={a.year}
+                className="relative z-10 flex h-full flex-col motion-safe:animate-[timelineReveal_.36s_ease-out]"
+              >
+                <div>
                   <span
-                    className="absolute inset-y-0 left-0 bg-[#4A9BD9] transition-[width] duration-200 ease-out"
-                    style={{ width: `${(active / LAST) * 100}%` }}
-                  />
-                </span>
-                <span>{items[LAST].year}</span>
+                    className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em]"
+                    style={{ color }}
+                  >
+                    <span className="size-1.5 rounded-full" style={{ backgroundColor: color }} />
+                    {kindLabel[a.kind][lang]}
+                  </span>
+
+                  <div className="mt-3 text-[64px] font-medium leading-none tracking-[-0.04em] text-[#0F1B2D] tabular-nums md:text-[100px] lg:text-[120px]">
+                    {a.year}
+                  </div>
+
+                  <p className="mt-5 text-xl font-semibold leading-snug tracking-[-0.02em] text-[#0F1B2D] [word-break:keep-all] md:text-2xl">
+                    {a.event[lang]}
+                  </p>
+                  {a.detail && (
+                    <p className="mt-3 max-w-lg leading-relaxed text-[#5A6572] [word-break:keep-all] md:text-lg">
+                      {a.detail[lang]}
+                    </p>
+                  )}
+                </div>
+
+                {/* 하단: 인덱스 */}
+                <div className="mt-auto flex items-center gap-3 pt-6 text-xs tabular-nums text-neutral-400">
+                  <span className="font-semibold text-[#0F1B2D]">{String(active + 1).padStart(2, '0')}</span>
+                  <span className="h-px w-6 bg-neutral-300" />
+                  <span>{String(items.length).padStart(2, '0')}</span>
+                </div>
               </div>
+            </div>
+
+            {/* 모바일: 레일 대신 가로 진행 막대 */}
+            <div className="flex items-center gap-3 text-xs tabular-nums text-neutral-400 md:hidden">
+              <span>{items[0].year}</span>
+              <span className="relative h-px flex-1 overflow-hidden bg-neutral-200">
+                <span
+                  className="absolute inset-y-0 left-0 bg-[#4A9BD9] transition-[width] duration-200 ease-out"
+                  style={{ width: `${(active / LAST) * 100}%` }}
+                />
+              </span>
+              <span>{items[LAST].year}</span>
             </div>
           </div>
         </Container>

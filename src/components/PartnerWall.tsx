@@ -10,11 +10,10 @@ const copy = {
     th: 'ลูกค้าของเรา',
   },
   lead: {
-    ko: '반도체 팹부터 대학병원 수술실까지, 요구 청정도가 가장 높은 현장에 공급해 왔습니다.',
-    en: 'From semiconductor fabs to university hospital operating theatres — the sites with the highest cleanliness requirements.',
-    th: 'ตั้งแต่โรงงานเซมิคอนดักเตอร์ไปจนถึงห้องผ่าตัดของโรงพยาบาลมหาวิทยาลัย — สถานที่ที่มีข้อกำหนดความสะอาดสูงสุด',
+    ko: '1995년 삼성전자 납품을 시작으로, 반도체 팹부터 대학병원 수술실까지 요구 청정도가 가장 높은 현장에 공급해 왔습니다.',
+    en: 'Since our first delivery to Samsung Electronics in 1995 — from semiconductor fabs to university hospital operating theatres, the sites with the highest cleanliness requirements.',
+    th: 'นับตั้งแต่การส่งมอบครั้งแรกให้ Samsung Electronics ในปี 1995 — ตั้งแต่โรงงานเซมิคอนดักเตอร์ไปจนถึงห้องผ่าตัดของโรงพยาบาลมหาวิทยาลัย สถานที่ที่มีข้อกำหนดความสะอาดสูงสุด',
   },
-  since: { ko: '납품', en: 'Since', th: 'ตั้งแต่' },
 } satisfies Record<string, Record<Lang, string>>;
 
 export default function PartnerWall({ lang }: { lang: Lang }) {
@@ -33,7 +32,7 @@ export default function PartnerWall({ lang }: { lang: Lang }) {
           {partners.map((p) => (
             <li
               key={p.id}
-              className="flex min-h-[132px] flex-col items-center justify-center gap-2 border-r border-b border-neutral-200 bg-white px-4 py-8 text-center"
+              className="flex min-h-[120px] items-center justify-center border-r border-b border-neutral-200 bg-white px-4 py-8 text-center"
             >
               {/* 로고와 워드마크가 섞여도 광학 크기가 맞도록 높이를 고정한 박스에 담는다. */}
               <div className="flex h-10 items-center justify-center">
@@ -51,9 +50,6 @@ export default function PartnerWall({ lang }: { lang: Lang }) {
                   </span>
                 )}
               </div>
-              <span className="text-xs tabular-nums text-neutral-500">
-                {copy.since[lang]} {p.since}
-              </span>
             </li>
           ))}
         </ul>

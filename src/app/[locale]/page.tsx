@@ -227,7 +227,10 @@ export default async function HomePage({ params }: Props) {
                   <h3 className="text-xl lg:text-2xl font-semibold text-[#0F1B2D] tracking-[-0.02em]">
                     {industry.name[lang]}
                   </h3>
-                  <p className="mt-2 text-base leading-relaxed text-[#424242] [word-break:keep-all]">
+                  <p className="mt-2 text-[15px] font-medium text-[#1F2A3A] [word-break:keep-all]">
+                    {industry.lead[lang]}
+                  </p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-[#5A6572] [word-break:keep-all]">
                     {industry.caption[lang]}
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">

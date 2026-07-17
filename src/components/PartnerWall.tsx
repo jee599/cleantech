@@ -18,7 +18,7 @@ const copy = {
 
 export default function PartnerWall({ lang }: { lang: Lang }) {
   return (
-    <section className="border-t border-neutral-200 bg-[#F4F6F8] py-16 md:py-24">
+    <section className="border-t border-neutral-200 bg-white py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="h-0.5 w-12 bg-[#4A9BD9] mb-4" />
         <h2 className="text-3xl font-medium tracking-[-0.02em] text-[#0F1B2D] lg:text-4xl">

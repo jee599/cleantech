@@ -1,8 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import PageHero from '@/components/PageHero';
 import Container from '@/components/Container';
-import HistoryScrubber from '@/components/HistoryScrubber';
-import PartnerWall from '@/components/PartnerWall';
+import HistoryTimeline from '@/components/HistoryTimeline';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -28,10 +27,9 @@ export default async function HistoryPage({ params }: Props) {
       />
       <section className="py-16 md:py-24">
         <Container>
-          <HistoryScrubber lang={lang} />
+          <HistoryTimeline lang={lang} />
         </Container>
       </section>
-      <PartnerWall lang={lang} />
     </>
   );
 }

@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import Container from '@/components/Container';
 import { getProductsByCategory } from '@/data/products';
 import { industries } from '@/data/industries';
+import PartnerWall from '@/components/PartnerWall';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -249,6 +250,9 @@ export default async function HomePage({ params }: Props) {
           </div>
         </Container>
       </section>
+
+      {/* 협업 업체 로고 벽 — 신뢰 신호를 홈에 노출 */}
+      <PartnerWall lang={lang} />
 
       {/* CTA Section with background image */}
       <section className="relative py-20 lg:py-28">
